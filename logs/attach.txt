@@ -1,0 +1,6 @@
+> docker run -d --name haiba00-m1-attach ubuntu:24.04 bash -lc 'sleep 3; echo MAIN-FINISHED'
+bec8e44cdf8a5d3c5bd1aae9e5bfc2808aedf0329b064edccfee31be5041b44e
+> docker attach --no-stdin haiba00-m1-attach
+MAIN-FINISHED
+> docker inspect --format '{{.State.Status}}' haiba00-m1-attach
+exited

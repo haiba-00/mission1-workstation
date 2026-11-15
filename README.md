@@ -12,7 +12,7 @@ Windows / PowerShell / Git 2.56.0.windows.4 / Docker 29.9.2 (Docker Desktop Linu
 - [x] 바인드 마운트 BEFORE→AFTER
 - [x] 컨테이너 삭제 후 볼륨 데이터 유지
 - [x] 저장소별 삼촌 Git 작성자 설정 및 main 브랜치
-- [ ] GitHub haiba-00 인증·저장소 업로드, VS Code 연동 증거
+- [x] GitHub haiba-00 인증·저장소 업로드, VS Code 로그인 증거
 - [ ] 주소창 포함 브라우저 캡처
 
 실제 명령과 출력은 [전체 로그](logs/verification.txt), [권한 수정 검증](logs/permissions-fix.txt)에 있다. verify.ps1은 실행 절차다. 기존 haiba00-m1-* 컨테이너가 없는 환경에서 실행한다. 반복 시 본 실습 컨테이너만 확인해 정리하고 web/index.html의 AFTER를 BEFORE로 복원한다. 권한 실습의 stat 명령은 인용부호 오류가 있어 아래 대체 절차를 따른다.
@@ -34,7 +34,7 @@ NGINX 베이스에 직접 작성한 web/을 COPY했다. LABEL은 이미지 식�
 
 바인드 마운트는 호스트 변경을 재빌드 없이 즉시 반영했다. 볼륨은 컨테이너와 독립적으로 유지되어 삭제 전후 모두 haiba00-persistent를 읽었다.
 
-exec는 실행 중인 컨테이너에 새 프로세스를 만든다. echo가 끝나도 주 프로세스 sleep infinity는 유지됨을 ps로 확인했다. attach는 주 프로세스 입출력에 연결한다. attach 대화형 실험은 아직 미수행이다.
+exec는 실행 중인 컨테이너에 새 프로세스를 만든다. echo가 끝나도 주 프로세스 sleep infinity는 유지됨을 ps로 확인했다. attach는 주 프로세스 입출력에 연결한다. attach --no-stdin으로 주 프로세스 출력 MAIN-FINISHED를 관찰했고 주 프로세스 종료 후 exited를 확인했다. [실제 명령과 출력](logs/attach.txt).
 
 절대 경로 /practice/demo는 루트 기준이며 /practice에서 상대 경로 demo와 같다. r=4,w=2,x=1이고 소유자/그룹/기타 순이다. 644는 소유자 읽기쓰기, 나머지 읽기다. 755는 소유자 전체, 나머지 읽기/실행이다. 폴더 x는 진입 권한이다. NTFS와 혼동하지 않도록 Linux 컨테이너에서 실험했다.
 
@@ -55,4 +55,5 @@ Git은 로컬 이력 관리, GitHub는 원격 협업 서비스다. 작성자와 
 ![18080 웹 서버 응답](evidence/web-18080.png)
 
 이 캡처는 페이지 본문이며 주소창은 포함하지 않는다. 포트 주소와 응답은 검증 로그에서 확인한다. 공개용 로그는 로컬 사용자 경로, 이메일, 기존 타 실습 컨테이너 행을 마스킹/제외했다.
+
 
