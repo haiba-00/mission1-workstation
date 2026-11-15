@@ -46,14 +46,19 @@ Git은 로컬 이력 관리, GitHub는 원격 협업 서비스다. 작성자와 
 2. stat missing operand → PowerShell 중첩 따옴표 전달 오류 가설 → 최초 로그 실패 확인 → chmod와 ls -ld로 전후 재검증 성공.
 3. AFTER 변경 중 한글 깨짐 → Windows PowerShell 기본 읽기 인코딩 가설 → 응답에서 손상 확인 → UTF-8 파일 복원. 스크립트의 Get-Content에는 -Encoding utf8을 지정해야 한다.
 
-## 남은 작업
+## 제출 저장소 및 계정 증거
 
-기존 GitHub 인증이 다른 사용자여서 업로드하지 않았다. haiba-00으로 별도 인증 후 삼촌 저장소에 업로드하고 VS Code 및 브라우저 증거를 추가해야 제출 완료다. 로그에 비밀번호/토큰/개인키를 넣지 않는다.
+https://github.com/haiba-00/mission1-workstation
+
+![VS Code 삼촌 계정](evidence/vscode-haiba00.png)
+
+삼촌 계정 인증과 원격 main 업로드를 확인했다. 주소창 포함 캡처는 미확보이며 curl 명령과 응답을 포트 검증 증거로 제공한다.
 
 ## 웹 접속 화면
 
 ![18080 웹 서버 응답](evidence/web-18080.png)
 
 이 캡처는 페이지 본문이며 주소창은 포함하지 않는다. 포트 주소와 응답은 검증 로그에서 확인한다. 공개용 로그는 로컬 사용자 경로, 이메일, 기존 타 실습 컨테이너 행을 마스킹/제외했다.
+
 
 
