@@ -1,0 +1,78 @@
+# 실제 명령과 출력
+
+```text
+> git --version
+
+
+> docker --version
+
+
+> docker info
+
+
+> git config --local --list
+
+
+> docker run --rm hello-world
+
+
+> docker run --name haiba00-m1-final-linux -d ubuntu:24.04 sleep infinity
+
+
+> docker exec haiba00-m1-final-linux bash -lc 'pwd; ls -la; mkdir -p /practice/demo; cd /practice; touch empty.txt; echo hello > original.txt; cp original.txt copy.txt; mv copy.txt renamed.txt; cat renamed.txt; rm renamed.txt; ls -la; ls -ld empty.txt demo; chmod 600 empty.txt; chmod 700 demo; ls -ld empty.txt demo'
+
+
+> docker exec haiba00-m1-final-linux echo exec-returned-container-still-running
+
+
+> docker ps
+
+
+> docker build -t haiba00-mission1:1.0 .
+
+
+> docker run -d --name haiba00-m1-final-web -p 18082:80 haiba00-mission1:1.0
+
+
+> curl.exe --fail http://localhost:18082
+
+
+> docker run -d --name haiba00-m1-final-bind -p 18083:80 --mount type=bind,source=<LOCAL_PATH>,target=/usr/share/nginx/html,readonly haiba00-mission1:1.0
+
+
+> curl.exe --fail http://localhost:18083
+
+
+> curl.exe --fail http://localhost:18083
+
+
+> docker volume create haiba00-m1-final-data
+
+
+> docker run --name haiba00-m1-final-vol-before -v haiba00-m1-final-data:/data ubuntu:24.04 bash -lc 'echo haiba00-persistent > /data/proof.txt; cat /data/proof.txt'
+
+
+> docker rm haiba00-m1-final-vol-before
+
+
+> docker run --rm -v haiba00-m1-final-data:/data ubuntu:24.04 cat /data/proof.txt
+
+
+> docker images
+
+
+> docker logs haiba00-m1-final-web
+
+
+> docker stats --no-stream haiba00-m1-final-web haiba00-m1-final-bind
+
+
+> docker stop haiba00-m1-final-linux
+
+
+> docker ps -a
+
+
+
+```
+

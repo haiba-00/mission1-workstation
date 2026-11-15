@@ -1,5 +1,9 @@
 # haiba-00 미션1 개발 작업실
 
+## 프로젝트 개요
+
+터미널로 Linux 파일과 권한을 조작하고, NGINX 기반 커스텀 이미지를 빌드해 포트 매핑·바인드 마운트·볼륨 영속성을 검증한다. 같은 절차를 다른 작업 폴더에서 재현할 수 있도록 실행 스크립트와 실제 명령·출력을 제공한다.
+
 Windows / PowerShell / Git 2.56.0.windows.4 / Docker 29.9.2 (Docker Desktop Linux engine).
 
 ## 검증 결과
@@ -15,7 +19,7 @@ Windows / PowerShell / Git 2.56.0.windows.4 / Docker 29.9.2 (Docker Desktop Linu
 - [x] GitHub haiba-00 인증·저장소 업로드, VS Code 로그인 증거
 - [x] 주소창 포함 브라우저 캡처
 
-실제 명령과 출력은 [전체 로그](logs/verification.txt), [권한 수정 검증](logs/permissions-fix.txt)에 있다. verify.ps1은 실행 절차다. 기존 haiba00-m1-final-* 컨테이너가 없는 환경에서 실행한다. 반복 시 본 실습 컨테이너만 확인해 정리하고 web/index.html의 AFTER를 BEFORE로 복원한다. 권한 실습 인용부호 오류를 ls -ld로 수정하고 전체 스크립트를 재실행했다. 최신 검증 포트는 18082/18083이며 최초 접속 캡처 포트는 18080이다.
+실제 명령과 출력은 [전체 로그](logs/verification.md), [권한 수정 검증](logs/permissions-fix.md)에 있다. verify.ps1은 실행 절차다. 기존 haiba00-m1-final-* 컨테이너가 없는 환경에서 실행한다. 반복 시 본 실습 컨테이너만 확인해 정리하고 web/index.html의 AFTER를 BEFORE로 복원한다. 권한 실습 인용부호 오류를 ls -ld로 수정하고 전체 스크립트를 재실행했다. 최신 검증 포트는 18082/18083이며 최초 접속 캡처 포트는 18080이다.
 
 ## 재현 명령
 
@@ -34,7 +38,7 @@ NGINX 베이스에 직접 작성한 web/을 COPY했다. LABEL은 이미지 식�
 
 바인드 마운트는 호스트 변경을 재빌드 없이 즉시 반영했다. 볼륨은 컨테이너와 독립적으로 유지되어 삭제 전후 모두 haiba00-persistent를 읽었다.
 
-exec는 실행 중인 컨테이너에 새 프로세스를 만든다. echo가 끝나도 주 프로세스 sleep infinity는 유지됨을 ps로 확인했다. attach는 주 프로세스 입출력에 연결한다. attach --no-stdin으로 주 프로세스 출력 MAIN-FINISHED를 관찰했고 주 프로세스 종료 후 exited를 확인했다. [실제 명령과 출력](logs/attach.txt).
+exec는 실행 중인 컨테이너에 새 프로세스를 만든다. echo가 끝나도 주 프로세스 sleep infinity는 유지됨을 ps로 확인했다. attach는 주 프로세스 입출력에 연결한다. attach --no-stdin으로 주 프로세스 출력 MAIN-FINISHED를 관찰했고 주 프로세스 종료 후 exited를 확인했다. [실제 명령과 출력](logs/attach.md).
 
 절대 경로 /practice/demo는 루트 기준이며 /practice에서 상대 경로 demo와 같다. r=4,w=2,x=1이고 소유자/그룹/기타 순이다. 644는 소유자 읽기쓰기, 나머지 읽기다. 755는 소유자 전체, 나머지 읽기/실행이다. 폴더 x는 진입 권한이다. NTFS와 혼동하지 않도록 Linux 컨테이너에서 실험했다.
 
@@ -64,4 +68,5 @@ https://github.com/haiba-00/mission1-workstation
 
 
 ![주소창 포함 실제 접속](evidence/browser-address-18080.png)
+
 
