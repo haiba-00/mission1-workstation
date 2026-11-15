@@ -13,9 +13,9 @@ Windows / PowerShell / Git 2.56.0.windows.4 / Docker 29.9.2 (Docker Desktop Linu
 - [x] 컨테이너 삭제 후 볼륨 데이터 유지
 - [x] 저장소별 삼촌 Git 작성자 설정 및 main 브랜치
 - [x] GitHub haiba-00 인증·저장소 업로드, VS Code 로그인 증거
-- [ ] 주소창 포함 브라우저 캡처
+- [x] 주소창 포함 브라우저 캡처
 
-실제 명령과 출력은 [전체 로그](logs/verification.txt), [권한 수정 검증](logs/permissions-fix.txt)에 있다. verify.ps1은 실행 절차다. 기존 haiba00-m1-* 컨테이너가 없는 환경에서 실행한다. 반복 시 본 실습 컨테이너만 확인해 정리하고 web/index.html의 AFTER를 BEFORE로 복원한다. 권한 실습의 stat 명령은 인용부호 오류가 있어 아래 대체 절차를 따른다.
+실제 명령과 출력은 [전체 로그](logs/verification.txt), [권한 수정 검증](logs/permissions-fix.txt)에 있다. verify.ps1은 실행 절차다. 기존 haiba00-m1-final-* 컨테이너가 없는 환경에서 실행한다. 반복 시 본 실습 컨테이너만 확인해 정리하고 web/index.html의 AFTER를 BEFORE로 복원한다. 권한 실습 인용부호 오류를 ls -ld로 수정하고 전체 스크립트를 재실행했다. 최신 검증 포트는 18082/18083이며 최초 접속 캡처 포트는 18080이다.
 
 ## 재현 명령
 
@@ -52,13 +52,16 @@ https://github.com/haiba-00/mission1-workstation
 
 ![VS Code 삼촌 계정](evidence/vscode-haiba00.png)
 
-삼촌 계정 인증과 원격 main 업로드를 확인했다. 주소창 포함 캡처는 미확보이며 curl 명령과 응답을 포트 검증 증거로 제공한다.
+삼촌 계정 인증과 원격 main 업로드를 확인했다. 주소창 포함 캡처와 curl 명령·응답 로그를 모두 제공한다.
 
 ## 웹 접속 화면
 
 ![18080 웹 서버 응답](evidence/web-18080.png)
 
-이 캡처는 페이지 본문이며 주소창은 포함하지 않는다. 포트 주소와 응답은 검증 로그에서 확인한다. 공개용 로그는 로컬 사용자 경로, 이메일, 기존 타 실습 컨테이너 행을 마스킹/제외했다.
+아래 추가 캡처는 주소창과 웹 응답을 함께 포함한다. 공개용 로그는 로컬 사용자 경로, 이메일, 기존 타 실습 컨테이너 행을 마스킹/제외했다.
 
 
+
+
+![주소창 포함 실제 접속](evidence/browser-address-18080.png)
 
