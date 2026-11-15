@@ -1,0 +1,18 @@
+> docker start haiba00-m1-linux'; docker start haiba00-m1-linux; Write-Output '> docker exec haiba00-m1-linux bash -lc permissions exercise'; docker exec haiba00-m1-linux bash -lc 'cd /practice; chmod 644 empty.txt; chmod 755 demo; ls -ld empty.txt demo; chmod 600 empty.txt; chmod 700 demo; ls -ld empty.txt demo'; Stop-Transcript
+Process ID: 35568
+PSVersion: 7.6.9
+PSEdition: Core
+GitCommitId: 7.6.9
+OS: Microsoft Windows 10.0.26300
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Transcript started, output file is logs/permissions-fix.txt
+> docker start haiba00-m1-linux
+
+> docker exec haiba00-m1-linux bash -lc permissions exercise
+
+
